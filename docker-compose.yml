@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  shopfrontend:
+    image: hennihaus/shopfrontend:v1.0.2
+    ports:
+      - 4200:80
+  shopbackend:
+    image: hennihaus/shopbackend:v1.0.3
+    environment:
+      - DB_HOST=shopdb
+    ports:
+      - 4201:4201
+    depends_on:
+      - shopdb
+  shopdb:
+    image: hennihaus/shopdb:v1.0.3
